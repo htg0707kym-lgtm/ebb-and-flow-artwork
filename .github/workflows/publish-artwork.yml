@@ -1,0 +1,41 @@
+name: Publish artwork
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: artwork-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download frozen artwork
+        env:
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          base="https://github.com/$GH_REPO/releases/download/artwork-2026-10-28"
+          curl --fail --location --retry 3 "$base/artwork-site-20261028.zip.part1" -o part1
+          curl --fail --location --retry 3 "$base/artwork-site-20261028.zip.part2" -o part2
+          cat part1 part2 > artwork.zip
+          echo "6bb838e42b4f39a85b172bceba30d0238a57738f7e56cc0a1c272dceebffdc31  artwork.zip" | sha256sum --check
+          mkdir site
+          unzip -q artwork.zip -d site
+          test -f site/index.html
+          test -f site/full-partitions-20261028-current.mp4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy artwork
+        id: deployment
+        uses: actions/deploy-pages@v4

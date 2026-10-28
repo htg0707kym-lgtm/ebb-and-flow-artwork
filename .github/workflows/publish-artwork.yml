@@ -30,11 +30,11 @@ jobs:
           unzip -q artwork.zip -d site
           test -f site/index.html
           test -f site/full-partitions-20261028-current.mp4
-      - name: Apply verified motion controls
+      - name: Apply verified sharing kit
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-28-motion/artwork-motion-overlay-20261028.zip" -o overlay.zip
-          echo "9fa4b5ed53a7718b0779cec0b6781fa285d2df773a8e3fb2541e7490874d966e  overlay.zip" | sha256sum --check
+          curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-28-share/artwork-share-overlay-20261028.zip" -o overlay.zip
+          echo "8368153f1be5e6ab1582df7d6e79a991b9cb9a4b8ae8764e3b1b27edf05ff9c1  overlay.zip" | sha256sum --check
           unzip -q -o overlay.zip -d site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

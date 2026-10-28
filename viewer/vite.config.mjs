@@ -1,2 +1,0 @@
-import {defineConfig} from 'vite';
-export default defineConfig({base:'./',build:{rollupOptions:{input:{watch:'watch.html',share:'share.html'}}}});

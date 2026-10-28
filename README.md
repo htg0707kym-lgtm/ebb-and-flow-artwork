@@ -1,35 +1,8 @@
 # ebb and flow
 
-音楽を聴きながら映像を操作できる、青と白の映像作品です。
-GitHubの操作やログインは不要です。まず下のリンクからどうぞ。
+海と陸のあいだで、まだ乾いていない記憶を再生する。
 
-## まずはこちら
-
-| やりたいこと | 開く場所 |
-| --- | --- |
-| 見る・触って遊ぶ | **[鑑賞ページを開く](https://htg0707kym-lgtm.github.io/ebb-and-flow-artwork/)** |
-| スマホで投稿素材を保存する | **[投稿用動画・画像・投稿文](https://htg0707kym-lgtm.github.io/ebb-and-flow-artwork/share.html)** |
-| 素材・動画・音声の場所を探す | **[ファイルと素材の案内](PUBLIC_FILES.md)** |
-| プログラムを見る | **[鑑賞ページの元コード](viewer/)** |
-
-高速な切替・明滅を含みます。
-
-## 何がどこにある？
-
-- **Code（この画面）**：説明書と、読める状態の元コード。
-- **Releases（配布ファイル）**：サイズの大きい画像・動画・描画データのZIP。
-- **鑑賞ページ**：完成動画とリアルタイム操作。
-- **投稿素材ページ**：短い動画2本、サムネ、投稿文、全編動画の保存。
-
-ボーカル単体、個別ステム、元WAV、制作アプリ本体は公開していません。
-完成作品の音声にはボーカルを含みます。公開素材の再利用条件は権利者に確認してください。
-
-## 架空の技術白書
-
-以下は以前から掲載している冗談の設定資料です。実際のファイル案内は上のリンクをご覧ください。
-
-<details>
-<summary>海洋魔術技術白書を読む</summary>
+[ENA — 海へ接続](https://htg0707kym-lgtm.github.io/ebb-and-flow-artwork/) · [MIX — 完成音源](https://htg0707kym-lgtm.github.io/ebb-and-flow-artwork/audio/watch-mix.m4a) · [STEMS — 潮流の断片](https://htg0707kym-lgtm.github.io/ebb-and-flow-artwork/stems.html) · [映像・画像を持ち帰る](https://htg0707kym-lgtm.github.io/ebb-and-flow-artwork/share.html)
 
 ## 深海描画基盤 ENA / 海洋魔術技術白書
 **海神庁・感情流体演算室／査読：満潮待ち**
@@ -67,5 +40,5 @@ GitHubの操作やログインは不要です。まず下のリンクからど�
 『凪のあすから』の海と陸、エナ、海神、ぬくみ雪、眠りのイメージから着想した非公式の創作です。作品公式の技術設定・説明ではなく、公式関係者との提携を示すものでもありません。
 設定の参考：[P.A.WORKS 作品紹介](https://www.pa-works.jp/works/nagiasu/)／[バンダイチャンネル 第十話紹介](https://www.b-ch.com/titles/3859/010)
 
-</details>
+高速な切替・明滅を含みます。STEMSには楽器音源のみを収録し、ボーカル単体は公開しません。
 

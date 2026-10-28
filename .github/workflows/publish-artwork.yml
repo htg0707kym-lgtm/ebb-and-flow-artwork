@@ -30,11 +30,11 @@ jobs:
           unzip -q artwork.zip -d site
           test -f site/index.html
           test -f site/full-partitions-20261028-current.mp4
-      - name: Apply verified sharing kit
+      - name: Apply verified ENA edition
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-28-share/artwork-share-overlay-20261028.zip" -o overlay.zip
-          echo "8368153f1be5e6ab1582df7d6e79a991b9cb9a4b8ae8764e3b1b27edf05ff9c1  overlay.zip" | sha256sum --check
+          curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-28-stems/artwork-ena-overlay-20261028.zip" -o overlay.zip
+          echo "3bbe550ce34e152f9f1efa33350586614501f64b6baf6aae70cc6fb1e70b2e04  overlay.zip" | sha256sum --check
           unzip -q -o overlay.zip -d site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
@@ -43,3 +43,4 @@ jobs:
       - name: Deploy artwork
         id: deployment
         uses: actions/deploy-pages@v4
+

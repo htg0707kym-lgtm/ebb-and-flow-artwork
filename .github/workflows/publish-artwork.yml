@@ -1,8 +1,6 @@
 name: Publish artwork
 on:
   workflow_dispatch:
-  release:
-    types: [published]
 permissions:
   contents: read
   pages: write
@@ -23,11 +21,11 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          base="https://github.com/$GH_REPO/releases/download/artwork-2026-10-28"
-          curl --fail --location --retry 3 "$base/artwork-site-20261028.zip.part1" -o part1
-          curl --fail --location --retry 3 "$base/artwork-site-20261028.zip.part2" -o part2
+          base="https://github.com/$GH_REPO/releases/download/artwork-2026-10-28-mobile"
+          curl --fail --location --retry 3 "$base/artwork-site-mobile-20261028.zip.part1" -o part1
+          curl --fail --location --retry 3 "$base/artwork-site-mobile-20261028.zip.part2" -o part2
           cat part1 part2 > artwork.zip
-          echo "6bb838e42b4f39a85b172bceba30d0238a57738f7e56cc0a1c272dceebffdc31  artwork.zip" | sha256sum --check
+          echo "cf5c2507ccccb32855e39ebbef45b061f5a9ec68f584fd7ac8173d442e14c035  artwork.zip" | sha256sum --check
           mkdir site
           unzip -q artwork.zip -d site
           test -f site/index.html

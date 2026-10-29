@@ -30,11 +30,11 @@ jobs:
           unzip -q artwork.zip -d site
           test -f site/index.html
           test -f site/full-partitions-20261028-current.mp4
-      - name: Apply verified sea and smooth previews
+      - name: Apply verified stable motion and sea gallery
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-29-sea/artwork-sea-overlay-20261029.zip" -o overlay.zip
-          echo "52fc8a74c50701eac58e0200c92e41f203471fc0a6f8ab87f954782bc5a5267a  overlay.zip" | sha256sum --check
+          curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-29-stable/artwork-stable-overlay-20261029.zip" -o overlay.zip
+          echo "8201e72d0d9ad0df3ee569a8cb4c491560db2175e2bc5b7da312867dc9a9a572  overlay.zip" | sha256sum --check
           unzip -q -o overlay.zip -d site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
@@ -43,5 +43,3 @@ jobs:
       - name: Deploy artwork
         id: deployment
         uses: actions/deploy-pages@v4
-
-

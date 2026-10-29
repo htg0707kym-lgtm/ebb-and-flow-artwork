@@ -35,7 +35,21 @@ jobs:
           set -euo pipefail
           curl --fail --location --retry 3 "https://github.com/${{ github.repository }}/releases/download/artwork-2026-10-29-stable/artwork-stable-overlay-20261029.zip" -o overlay.zip
           echo "8201e72d0d9ad0df3ee569a8cb4c491560db2175e2bc5b7da312867dc9a9a572  overlay.zip" | sha256sum --check
-          unzip -q -o overlay.zip -d site
+          python3 - <<'PY'
+          import pathlib, stat, zipfile
+          root = pathlib.Path('site').resolve()
+          with zipfile.ZipFile('overlay.zip') as archive:
+              for member in archive.infolist():
+                  name = member.filename.replace('\\', '/')
+                  target = (root / name).resolve()
+                  if not target.is_relative_to(root) or stat.S_ISLNK(member.external_attr >> 16):
+                      raise ValueError('Unsafe archive member')
+                  if name.endswith('/'):
+                      target.mkdir(parents=True, exist_ok=True)
+                  else:
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      target.write_bytes(archive.read(member))
+          PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
